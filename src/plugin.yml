@@ -5,4 +5,3 @@ main: eu.servermanager.dev.spigot.Main
 commands:
   servermanager:
     aliases: sm
-  testconfig:

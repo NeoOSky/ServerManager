@@ -1,6 +1,5 @@
 package eu.servermanager.dev.spigot;
 
-import eu.servermanager.dev.spigot.commands.CommandTestConfig;
 import eu.servermanager.dev.spigot.utils.ServerManager;
 import eu.servermanager.dev.spigot.utils.ServerModule;
 import eu.servermanager.dev.spigot.utils.Utils;
@@ -43,7 +42,6 @@ public class Main extends JavaPlugin {
         ServerModule mod = new ServerModule(this.getDescription().getName(), Arrays.asList("ServerManager is \"a modern Essentials\".", "Customize your server is really easy with him.", "You can block commands with password, report cheaters and bad players, set the motd, the tablist,", "join messages, title on join ...", "blablabla, it's too long of say all functionnalities of ServerManager !", "I just saying \"ServerManager, customize your server!\" "), this.getDescription().getVersion(), this.getDescription().getAuthors());
         ServerManager.getInstance().registerModule(mod);
 
-        getCommand("testconfig").setExecutor(new CommandTestConfig());
 
         getServer().getConsoleSender().sendMessage("[ServerManager] ServerManager has been enabled!");
 
