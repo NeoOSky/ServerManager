@@ -1,0 +1,8 @@
+name: ServerManager
+version: Alpha-1.0
+authors: [NeoOSky, _Anto, Palamix, Youko, Xeinel]
+main: eu.servermanager.dev.spigot.Main
+commands:
+  servermanager:
+    aliases: sm
+  testconfig:
