@@ -1,7 +1,7 @@
 name: ServerManager
 version: Alpha-1.0
-authors: [NeoOSky, _Anto, Palamix, MembersOfSkriptMC]
-main: eu.dev.servermanager.spigot.Main
+authors: [NeoOSky, _Anto, MembersOfSkriptMC] 
+main: eu.dev.servermanager.spigot.Main 
 website: https://discord.gg/FX5sQPr
 commands:
   servermanager:
@@ -9,5 +9,3 @@ commands:
   op:
   clear:
     description: clear inventory from a player
-  maintenance:
-    description: manage the maintenance of the server

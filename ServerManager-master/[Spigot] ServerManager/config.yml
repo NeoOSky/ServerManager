@@ -1,0 +1,164 @@
+# _______  _______  _______           _______  _______  _______  _______  _        _______  _______  _______  _______ 
+#(  ____ \(  ____ \(  ____ )|\     /|(  ____ \(  ____ )(       )(  ___  )( (    /|(  ___  )(  ____ \(  ____ \(  ____ )
+#| (    \/| (    \/| (    )|| )   ( || (    \/| (    )|| () () || (   ) ||  \  ( || (   ) || (    \/| (    \/| (    )|
+#| (_____ | (__    | (____)|| |   | || (__    | (____)|| || || || (___) ||   \ | || (___) || |      | (__    | (____)|
+#(_____  )|  __)   |     __)( (   ) )|  __)   |     __)| |(_)| ||  ___  || (\ \) ||  ___  || | ____ |  __)   |     __)
+#      ) || (      | (\ (    \ \_/ / | (      | (\ (   | |   | || (   ) || | \   || (   ) || | \_  )| (      | (\ (   
+#/\____) || (____/\| ) \ \__  \   /  | (____/\| ) \ \__| )   ( || )   ( || )  \  || )   ( || (___) || (____/\| ) \ \__
+#\_______)(_______/|/   \__/   \_/   (_______/|/   \__/|/     \||/     \||/    )_)|/     \|(_______)(_______/|/   \__/
+#                                                                                                                     
+
+# Plugin made by NeoOSky, _Anto and Skript - Minecraft community.
+# If you don't want to use a functionality of ServerManager, set the Event to false or set text to "dont use".
+# We are free french developers. You help us when you rate this plugin ! You can also send a comment for ask to add new functionality.
+# If you found a bug, write a comment on spigot and we will correct it quickly.
+  
+  
+  
+########################################
+#--------------------------------------#
+#                Events                #
+#--------------------------------------#
+########################################
+Event:
+  Join:
+    enabled: true
+    joinmessage: '&a+ &e%player% join the server!'
+    title:
+      enabled: true
+      title: '&c&lSERVERMANAGER'
+      subtitle: '&e(Change this message in the config)'
+  FirstJoin:
+    enabled: true
+    joinmessage: '&d&lWelcome %player% on this server!'
+    title:
+      enabled: true
+      title: '&a&lWelcome!'
+      subtitle: '&eon this server!'
+    Quit:
+      enabled: true
+      quitmessage: '&c-&e %player% quit the server!'
+
+
+########################################
+#--------------------------------------#
+#                 Chat                 #
+#--------------------------------------#
+########################################
+  
+# Variables:
+# %player%, %displayname%, %customname%, %kills%, %deaths%, %online%, %server%, %message%
+ChatEvent:
+  enabled: true
+  format: '&7%displayname%&8 » &f%message%'
+  
+########################################
+#--------------------------------------#
+#               Economy                #
+#--------------------------------------#
+########################################
+  
+Economy:
+  enabled: true
+  maxmoney: '1000000'
+  minmoney: '10'
+  
+########################################
+#--------------------------------------#
+#             Permissions              #
+#--------------------------------------#
+########################################
+
+Permissions:
+  servermanager: 'servermanager.command'
+  op: 'servermanager.default.op'
+
+########################################
+#--------------------------------------#
+#             Moderation               #
+#--------------------------------------#
+########################################
+
+# Pas encore fait
+
+########################################
+#--------------------------------------#
+#              Messages                #
+#--------------------------------------#
+########################################
+  
+Prefix:
+  prefix: '&c&lServerManager&8 »'
+  prefix_maintenance: '&cMaintenance&8 »'
+  prefix_chat: '&cChatManager&8 »'
+  prefix_moderation: '&6[MODERATION]'
+  prefix_administration: '&c[ADMINISTRATION]'
+  prefix_money: '&f[&aAccount&f]'
+  prefix_error: '&cError&8 »'
+  prefix_sucess: '&aSucess&8 »'
+  prefix_command: '&cCommand&8 »'
+  prefix_report: '&cReport&8 »'
+  on: '&aenabled'
+  off: '&cdisabled'
+  
+Messages:
+  noperm: '&fYou dont have permission !'
+  offlineplayer: '&fThis player is offline !'
+  noplayer: '&fSelect a player !'
+  maintenance: '&fMaintenance is now %status%&f !'
+  maintenancedefaultkick: '&cYou cant join this serveur during maintenance !'
+  maintenancealready: '&fMaintenance is already %status%&f !'
+  chat: '&fThe chat is now %status%&f !'
+  chattalk: '&cThe chat is locked. You cant talk !'
+  chatalready: '&fChat is already %status%&f !'
+  neverplayed: '&fThis player never joined the server !'
+  opped: '&f%target% is now op.'
+  
+########################################
+#--------------------------------------#
+#              Commands                #
+#--------------------------------------#
+######################################## 
+ 
+CommandsBlocked:
+  password: 'password'
+  opBypass: false
+  blocked_cmd:
+  - 'op'
+  - 'deop'
+  
+########################################
+#--------------------------------------#
+#              Language                #
+#--------------------------------------#
+######################################## 
+Lang: 'en'
+
+en:
+  Prefix:
+    prefix: '&c&lServerManager&8 »'
+    prefix_maintenance: '&cMaintenance&8 »'
+    prefix_chat: '&cChatManager&8 »'
+    prefix_moderation: '&6[MODERATION]'
+    prefix_administration: '&c[ADMINISTRATION]'
+    prefix_money: '&f[&aAccount&f]'
+    prefix_error: '&cError&8 »'
+    prefix_sucess: '&aSucess&8 »'
+    prefix_command: '&cCommand&8 »'
+    prefix_report: '&cReport&8 »'
+    on: '&aenabled'
+    off: '&cdisabled'
+  Messages:
+    noperm: '&fYou dont have permission !'
+    offlineplayer: '&fThis player is offline !'
+    noplayer: '&fSelect a player !'
+    maintenance: '&fMaintenance is now %status%&f !'
+    maintenancedefaultkick: '&cYou cant join this serveur during maintenance !'
+    maintenancealready: '&fMaintenance is already %status%&f !'
+    chat: '&fThe chat is now %status%&f !'
+    chattalk: '&cThe chat is locked. You cant talk !'
+    chatalready: '&fChat is already %status%&f !'
+    neverplayed: '&fThis player never joined the server !'
+    opped: '&f%target% is now op.'
+  
+  

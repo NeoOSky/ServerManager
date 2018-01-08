@@ -1,55 +1,56 @@
 package eu.servermanager.dev.spigot;
 
-import eu.servermanager.dev.spigot.utils.ServerManager;
-import eu.servermanager.dev.spigot.utils.ServerModule;
-import eu.servermanager.dev.spigot.utils.Utils;
-import org.bukkit.Bukkit;
-import org.bukkit.Statistic;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
-
 import java.util.Arrays;
 
-public class Main extends JavaPlugin {
+import eu.servermanager.dev.spigot.commands.CommandMaintenance;
+import eu.servermanager.dev.spigot.commands.CommandServerManager;
+import eu.servermanager.dev.spigot.commands.defaults.CommandClear;
+import eu.servermanager.dev.spigot.commands.defaults.CommandOp;
+import eu.servermanager.dev.spigot.utils.ServerManager;
+import eu.servermanager.dev.spigot.utils.ServerModule;
+import org.bukkit.plugin.java.JavaPlugin;
+
+
+public class Main extends JavaPlugin{
 
     private static Main instance;
+    public static ServerManager srv;
+
     public static Main getInstance(){
         return instance;
     }
-    public static ServerManager srv;
-    public static Utils utils;
 
-
-
-
-    public String initVariables(String s, Player p) {
-        return s.replace("%online%", "" + Bukkit.getOnlinePlayers().size()).replace("%player xp to lvl%", "" + p.getExpToLevel()).replace("%player xp%", "" + p.getExp()).replace("%player fly%", "" + p.getFlySpeed()).replace("%player health%", "" + p.getHealth()).replace("%player gamemode%", "" + p.getGameMode()).replace("%player kills%", "" + p.getStatistic(Statistic.PLAYER_KILLS)).replace("%player deaths%", "" + p.getStatistic(Statistic.DEATHS)).replace("%player location%", p.getLocation().getX() + " " + p.getLocation().getY() + " " + p.getLocation().getZ() + " " + p.getLocation().getYaw() + " " + p.getLocation().getPitch() + " ").replace("%player display name%", p.getDisplayName()).replace("%player%", p.getName());
-    }
-    public String initVariables(String s){
-        return s.replace("&", "§").replace("%online%", ""+getServer().getOnlinePlayers().size());
-    }
 
     @Override
     public void onEnable() {
-        saveDefaultConfig();
         instance = this;
         srv = new ServerManager();
-        utils = new Utils();
-
-
-
-
-        ServerModule mod = new ServerModule(this.getDescription().getName(), Arrays.asList("ServerManager is \"a modern Essentials\".", "Customize your server is really easy with him.", "You can block commands with password, report cheaters and bad players, set the motd, the tablist,", "join messages, title on join ...", "blablabla, it's too long of say all functionnalities of ServerManager !", "I just saying \"ServerManager, customize your server!\" "), this.getDescription().getVersion(), this.getDescription().getAuthors());
-        ServerManager.getInstance().registerModule(mod);
-
-
-        getServer().getConsoleSender().sendMessage("[ServerManager] ServerManager has been enabled!");
-
+        saveDefaultConfig();
+        getCommand("servermanager").setExecutor(new CommandServerManager());
+        getCommand("maintenance").setExecutor(new CommandMaintenance());
+        getCommand("op").setExecutor(new CommandOp());
+        getCommand("clear").setExecutor(new CommandClear());
+        ServerModule mod = new ServerModule(getDescription().getName(), Arrays.asList("§7ServerManager is \"a modern Essentials\".", "§7Customize your server is really easy with him.", "§7You can block commands with password, report cheaters and bad players, set the motd, the tablist,", "§7join messages, title on join ...", "§7blablabla, it's too long of say all functionnalities of ServerManager !", "§7I just saying \"ServerManager, customize your server!\" "), getDescription().getVersion(), getDescription().getAuthors());
+        mod.init();
+        ServerModule cmd = new ServerModule("ServerManagerCommands", Arrays.asList("Replace defaults minecraft commands."), getDescription().getVersion(), getDescription().getAuthors());
+        cmd.init();
+        getServer().getConsoleSender().sendMessage("§e========================================");
+        getServer().getConsoleSender().sendMessage("§c§l             ServerManager");
+        getServer().getConsoleSender().sendMessage("§aEnabling:");
+        getServer().getConsoleSender().sendMessage("§aServerManager has been enabled !");
+        getServer().getConsoleSender().sendMessage("§c         By _Anto and NeoOSky");
+        getServer().getConsoleSender().sendMessage("§e========================================");
     }
-
     @Override
     public void onDisable() {
-        getServer().getConsoleSender().sendMessage("[ServerManager] ServerManager has been disabled!");
-    }
-}
+        getServer().getConsoleSender().sendMessage("§e========================================");
+        getServer().getConsoleSender().sendMessage("§c§l             ServerManager");
+        getServer().getConsoleSender().sendMessage("§aDisabling:");
+        getServer().getConsoleSender().sendMessage("§aServerManager has been disabled !");
+        getServer().getConsoleSender().sendMessage("§c         By _Anto and NeoOSky");
+        getServer().getConsoleSender().sendMessage("§e========================================");
 
+    }
+
+
+}
