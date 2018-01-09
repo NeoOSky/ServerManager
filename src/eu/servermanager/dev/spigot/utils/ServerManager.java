@@ -23,5 +23,4 @@ public class ServerManager {
     }
 
 
-    public String config_prefix = Main.getInstance().initVariables(Main.getInstance().getConfig().getString("Prefix.prefix"));
 }

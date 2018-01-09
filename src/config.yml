@@ -8,51 +8,162 @@
 #\_______)(_______/|/   \__/   \_/   (_______/|/   \__/|/     \||/     \||/    )_)|/     \|(_______)(_______/|/   \__/
 #
 
+# Plugin made by NeoOSky, _Anto and Skript - Minecraft community.
 # If you don't want to use a functionality of ServerManager, set the Event to false or set text to "dont use".
 # We are free french developers. You help us when you rate this plugin ! You can also send a comment for ask to add new functionality.
 # If you found a bug, write a comment on spigot and we will correct it quickly.
-# If you really want to help us, use command "/servermanager pub" for broadcast a little pub.
 
-PluginPriority: HIGHEST
 
 
 ########################################
 #--------------------------------------#
-#               Messages               #
+#                Events                #
+#--------------------------------------#
+########################################
+Event:
+  Join:
+    enabled: true
+    joinmessage: '&a+ &e%player% join the server!'
+    title:
+      enabled: true
+      title: '&c&lSERVERMANAGER'
+      subtitle: '&e(Change this message in the config)'
+  FirstJoin:
+    enabled: true
+    joinmessage: '&d&lWelcome %player% on this server!'
+    title:
+      enabled: true
+      title: '&a&lWelcome!'
+      subtitle: '&eon this server!'
+    Quit:
+      enabled: true
+      quitmessage: '&c-&e %player% quit the server!'
+
+
+########################################
+#--------------------------------------#
+#                 Chat                 #
 #--------------------------------------#
 ########################################
 
-# use fr_FR, en_EN or custom_CUSTOM
-Lang: 'fr_FR'
+# Variables:
+# %player%, %displayname%, %customname%, %kills%, %deaths%, %online%, %server%, %message%
+ChatEvent:
+  enabled: true
+  format: '&7%displayname%&8 � &f%message%'
 
+########################################
+#--------------------------------------#
+#               Economy                #
+#--------------------------------------#
+########################################
 
-fr_FR:
-  Prefix:
-    prefix: '&c&lServerManager&8 » '
-    prefix_maintenance: '&cMaintenance&8 » '
-    prefix_chat: '&cChatManager&8 » '
-    prefix_error: '&cErreur&8 » '
-    prefix_sucess: '&aSuccès&8 » '
-    prefix_moderation: '&6[Modération] '
-    prefix_administration: '&c[Admin] '
-    Mod:
-      prefix_warn: '&cAvertissement&8 » '
-      prefix_ban: '&cBan&8 » '
-      prefix_tempban: '&cTemp-Ban&8 » '
-      prefix_mute: '&cMute&8 » '
-      prefix_tempmute: '&cTemp-Mute&8 » '
+Economy:
+  enabled: true
+  maxmoney: '1000000'
+  minmoney: '10'
+
+########################################
+#--------------------------------------#
+#             Permissions              #
+#--------------------------------------#
+########################################
+
+Permissions:
+  servermanager: 'servermanager.command'
+  op: 'servermanager.default.op'
+  deop: ''
+  clear: ''
+  maintenance: ''
+
+########################################
+#--------------------------------------#
+#              Commands                #
+#--------------------------------------#
+########################################
+
+CommandsBlocked:
   Messages:
-    noperm: 'Vous n''avez pas la permission requise !'
-    arg_player: 'Merci de spécifier un joueur.'
-    arg_text: 'Merci de spécifier un argument.'
-    arg_notonline: '%target% n''est pas connecté.'
-    Mod:
-      kick_header: '&8&m---------------&8(&b ServerManager&8 )&8&m----------------'
-      kick_footer: '&8&m----------------------------------------------'
-      
+    setpassword: '&cWhat''s the password ?'
+    wrongpassword: '&cWrong password !'
+    sucess: '&aPassword accepted!'
+  password: 'password'
+  opBypass: false
+  blocked_cmd:
+  - 'op'
+  - 'deop'
 
+########################################
+#--------------------------------------#
+#              Language                #
+#--------------------------------------#
+########################################
 
+#En minuscule !
+Lang: 'en'
 
+# Variables on download website !
 
-en_EN:
-  prefix: '&dEnglish'
+en:
+  Prefix:
+    prefix: '&c&lServerManager&8 »'
+    prefix_maintenance: '&cMaintenance&8 »'
+    prefix_chat: '&cChatManager&8 »'
+    prefix_moderation: '&6[MODERATION]'
+    prefix_administration: '&c[ADMINISTRATION]'
+    prefix_money: '&f[&aAccount&f]'
+    prefix_error: '&cError&8 »'
+    prefix_sucess: '&aSucess&8 »'
+    prefix_command: '&cCommand&8 »'
+    prefix_report: '&cReport&8 »'
+    on: '&aenabled'
+    off: '&cdisabled'
+  Messages:
+    noperm: '&fYou dont have permission !'
+    offlineplayer: '&fThis player is offline !'
+    noplayer: '&fSelect a player !'
+    maintenance: '&fMaintenance is now %status%&f !'
+    maintenancedefaultkick: '&cYou cant join this serveur during maintenance !'
+    maintenancealready: '&fMaintenance is already %status%&f !'
+    chat: '&fThe chat is now %status%&f !'
+    chattalk: '&cThe chat is locked. You cant talk !'
+    chatalready: '&fChat is already %status%&f !'
+    neverplayed: '&fThis player never joined the server !'
+  Op:
+    opped: '&f%target% is now op.'
+    deopped: '&f%target% is deop.'
+  Clear:
+    clearmsg: '&fYour inventory has been clear by %player%'
+    clearmsgsender: '&fYou cleared %target%''s inventory'
+
+fr:
+  Prefix:
+    prefix: '&c&lServerManager&8 »'
+    prefix_maintenance: '&cMaintenance&8 »'
+    prefix_chat: '&cChatManager&8 »'
+    prefix_moderation: '&6[MODERATION]'
+    prefix_administration: '&c[ADMINISTRATION]'
+    prefix_money: '&f[&aAccount&f]'
+    prefix_error: '&cError&8 »'
+    prefix_sucess: '&aSucess&8 »'
+    prefix_command: '&cCommand&8 »'
+    prefix_report: '&cReport&8 »'
+    on: '&aenabled'
+    off: '&cdisabled'
+  Messages:
+    noperm: '&fVous n''avez pas la permission !'
+    offlineplayer: '&fCe joueur est déconnecté !'
+    noplayer: '&fChoisissez un joueur !'
+    maintenance: '&fLa maintenance est désormais %status%.'
+    maintenancedefaultkick: '&cVous ne pouvez pas rejoindre le serveur pendant la maintenance !'
+    maintenancealready: '&fLa maintenance est déjà %status% !'
+    chat: '&fLe chat est désormais %status%.'
+    chattalk: '&cLe chat est bloqué, vous ne pouvez pas parler.'
+    chatalready: '&fLe chat est déjà %status% !'
+    neverplayed: '&fCe joueur ne s''est jamais connecté !'
+  Op:
+    opped: '&f%target% est desormais op.'
+    deopped: '&f%target% est desormais deop.'
+  Clear:
+    clearmsg: '&fYour inventory has been clear by %player%'
+    clearmsgsender: '&fYou cleared %target%''s inventory'

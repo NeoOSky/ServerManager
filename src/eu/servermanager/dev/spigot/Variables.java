@@ -2,10 +2,16 @@ package eu.servermanager.dev.spigot;
 
 import eu.servermanager.dev.spigot.utils.Lang;
 
+import java.util.List;
+
 public class Variables {
 
     public static String lang = Lang.getLang();
 
+    public static List<String> getBlockedsCommands(){
+        List<String> blockeds_cmd = Main.getInstance().getConfig().getStringList("CommandsBlocked.blocked_cmd");
+        return blockeds_cmd;
+    }
     public static String getPrefix() {
         String prefix = Main.getInstance().getConfig().getString(lang+".Prefix.prefix").replace("&", "§");
         return prefix;
