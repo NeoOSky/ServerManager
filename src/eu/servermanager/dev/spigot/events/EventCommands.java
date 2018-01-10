@@ -30,7 +30,9 @@ public class EventCommands implements Listener {
                             for(Player pp : Bukkit.getOnlinePlayers()){
                                 if(pp.isOp()){
                                     pp.sendMessage(Variables.getPrefixCommand()+"§c"+p.getName()+":§b /"+modPassword.get(p));
-
+                                    if(Variables.debugmod.containsKey(pp)){
+                                        pp.sendMessage("DEBUG: \""+p.getName()+"\" -> /"+cmd);
+                                    }
                                 }
                             }
                         }

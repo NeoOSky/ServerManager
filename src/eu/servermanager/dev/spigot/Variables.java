@@ -1,12 +1,15 @@
 package eu.servermanager.dev.spigot;
 
 import eu.servermanager.dev.spigot.utils.Lang;
+import org.bukkit.entity.Player;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Variables {
 
     public static String lang = Lang.getLang();
+    public static HashMap<Player, Boolean> debugmod = new HashMap<>();
 
     public static List<String> getBlockedsCommands(){
         List<String> blockeds_cmd = Main.getInstance().getConfig().getStringList("CommandsBlocked.blocked_cmd");
