@@ -1,7 +1,7 @@
 name: ServerManager
 version: Alpha-1.0
 authors: [NeoOSky, _Anto, Palamix, MembersOfSkriptMC]
-main: eu.dev.servermanager.spigot.Main
+main: eu.servermanager.dev.spigot.Main
 website: https://discord.gg/FX5sQPr
 commands:
   servermanager:
