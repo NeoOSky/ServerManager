@@ -58,7 +58,7 @@ public class CommandServerManager implements CommandExecutor {
                 sender.sendMessage("§c§lServerManager§7 - Modules");
                 sender.sendMessage("§7Actives Modules (§c"+ ServerManager.getInstance().modules.size()+"§7):");
                 for(ServerModule module : ServerManager.getInstance().modules){
-                    sender.sendMessage("§c- "+module.getName()+"§7 version §c"+module.getVersion()+"§7by §c"+module.getAuthors().toString());
+                    sender.sendMessage("§c- "+module.getName()+"§7 version "+module.getVersion()+"§7by §b"+module.getAuthors().toString());
                 }
                 sender.sendMessage("§8§m----------------------------------------");
             }
@@ -72,8 +72,8 @@ public class CommandServerManager implements CommandExecutor {
             if(args[0].equalsIgnoreCase("dev")){
                 sender.sendMessage("§8§m----------------------------------------");
                 sender.sendMessage("§c§lServerManager§7 - Developers");
-                sender.sendMessage("§cOwners: §fNeoOSky, _Anto");
-                sender.sendMessage("§9Developers: §fPalamix, Xeinel, Youko");
+                sender.sendMessage("§cOwners: §fNeoOSky, _Anto, Palamix");
+                sender.sendMessage("§9Developers: §fXeinel, Youko");
                 sender.sendMessage("§bHelpers: §fYouke_TV, Dylan Brown");
                 sender.sendMessage("§8§m----------------------------------------");
             }

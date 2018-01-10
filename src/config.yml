@@ -103,4 +103,11 @@ en:
   Clear:
     clearmsg: '&fYour inventory has been clear by %player%'
     clearmsgsender: '&fYou cleared %target%''s inventory'
+    clearperm: 'servermanager.defaults.clear'
+  Chat:
+    chatmute_perm: 'servermanager.commands.chat.mute'
+    chaton_perm: 'servermanager.commands.chat.on'
+    chatoff_perm: 'servermanager.commands.chat.off'
+    chat: '&fChat is now %status% !'
+    chat_usage: '&cCommand: /chat <on | clear | off>.'
 
