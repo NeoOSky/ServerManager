@@ -33,6 +33,12 @@ public class Utils {
         ((CraftPlayer)player).getHandle().playerConnection.sendPacket(titre);
         ((CraftPlayer)player).getHandle().playerConnection.sendPacket(soustitre);
     }
+    public boolean isStringValide(String s){
+        if(s == null) return false;
+        if(s.equalsIgnoreCase("dont use")) return false;
+        if(s.equalsIgnoreCase("")) return false;
+        return true;
+    }
 
 
 }
