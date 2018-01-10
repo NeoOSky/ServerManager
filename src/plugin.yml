@@ -6,7 +6,6 @@ website: https://discord.gg/FX5sQPr
 commands:
   servermanager:
     aliases: sm
-  op:
   clear:
     description: clear inventory from a player
   maintenance:

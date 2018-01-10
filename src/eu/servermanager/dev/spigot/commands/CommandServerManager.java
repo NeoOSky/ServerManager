@@ -73,8 +73,8 @@ public class CommandServerManager implements CommandExecutor {
                 sender.sendMessage("§8§m----------------------------------------");
                 sender.sendMessage("§c§lServerManager§7 - Developers");
                 sender.sendMessage("§cOwners: §fNeoOSky, _Anto");
-                sender.sendMessage("§cDevelopers: §fPalamix, Xeinel, Youko");
-                sender.sendMessage("§cHelpers: §fYouke_TV");
+                sender.sendMessage("§9Developers: §fPalamix, Xeinel, Youko");
+                sender.sendMessage("§bHelpers: §fYouke_TV, Dylan Brown");
                 sender.sendMessage("§8§m----------------------------------------");
             }
         }

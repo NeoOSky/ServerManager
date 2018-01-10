@@ -42,39 +42,9 @@ Event:
 
 ########################################
 #--------------------------------------#
-#                 Chat                 #
-#--------------------------------------#
-########################################
-
-# Variables:
-# %player%, %displayname%, %customname%, %kills%, %deaths%, %online%, %server%, %message%
-ChatEvent:
-  enabled: true
-  format: '&7%displayname%&8 � &f%message%'
-
-########################################
-#--------------------------------------#
 #               Economy                #
 #--------------------------------------#
 ########################################
-
-Economy:
-  enabled: true
-  maxmoney: '1000000'
-  minmoney: '10'
-
-########################################
-#--------------------------------------#
-#             Permissions              #
-#--------------------------------------#
-########################################
-
-Permissions:
-  servermanager: 'servermanager.command'
-  op: 'servermanager.default.op'
-  deop: ''
-  clear: ''
-  maintenance: ''
 
 ########################################
 #--------------------------------------#
@@ -101,8 +71,6 @@ CommandsBlocked:
 
 #En minuscule !
 Lang: 'en'
-
-# Variables on download website !
 
 en:
   Prefix:
@@ -136,34 +104,3 @@ en:
     clearmsg: '&fYour inventory has been clear by %player%'
     clearmsgsender: '&fYou cleared %target%''s inventory'
 
-fr:
-  Prefix:
-    prefix: '&c&lServerManager&8 »'
-    prefix_maintenance: '&cMaintenance&8 »'
-    prefix_chat: '&cChatManager&8 »'
-    prefix_moderation: '&6[MODERATION]'
-    prefix_administration: '&c[ADMINISTRATION]'
-    prefix_money: '&f[&aAccount&f]'
-    prefix_error: '&cError&8 »'
-    prefix_sucess: '&aSucess&8 »'
-    prefix_command: '&cCommand&8 »'
-    prefix_report: '&cReport&8 »'
-    on: '&aenabled'
-    off: '&cdisabled'
-  Messages:
-    noperm: '&fVous n''avez pas la permission !'
-    offlineplayer: '&fCe joueur est déconnecté !'
-    noplayer: '&fChoisissez un joueur !'
-    maintenance: '&fLa maintenance est désormais %status%.'
-    maintenancedefaultkick: '&cVous ne pouvez pas rejoindre le serveur pendant la maintenance !'
-    maintenancealready: '&fLa maintenance est déjà %status% !'
-    chat: '&fLe chat est désormais %status%.'
-    chattalk: '&cLe chat est bloqué, vous ne pouvez pas parler.'
-    chatalready: '&fLe chat est déjà %status% !'
-    neverplayed: '&fCe joueur ne s''est jamais connecté !'
-  Op:
-    opped: '&f%target% est desormais op.'
-    deopped: '&f%target% est desormais deop.'
-  Clear:
-    clearmsg: '&fYour inventory has been clear by %player%'
-    clearmsgsender: '&fYou cleared %target%''s inventory'
