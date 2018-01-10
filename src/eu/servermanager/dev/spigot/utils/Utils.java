@@ -39,6 +39,15 @@ public class Utils {
         if(s.equalsIgnoreCase("")) return false;
         return true;
     }
+    public int getIntInString(String s){
+        try{
+            int i = Integer.parseInt(s);
+            return i;
+        }catch(NullPointerException e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
 
 
 }
