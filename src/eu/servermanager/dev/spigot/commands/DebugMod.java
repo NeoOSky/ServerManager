@@ -1,4 +1,4 @@
-package eu.servermanager.dev.spigot.utils;
+package eu.servermanager.dev.spigot.commands;
 
 import eu.servermanager.dev.spigot.Variables;
 import org.bukkit.command.Command;
@@ -16,10 +16,11 @@ public class DebugMod implements CommandExecutor{
                 Player p = (Player)sender;
                 if(Variables.debugmod.containsKey(p)){
                     Variables.debugmod.remove(p);
-                    p.sendMessage("DEBUG: "+Variables.getOff());
-                }else{
+                    p.sendMessage("DEBUG: OFF");
+                }else if(!Variables.debugmod.containsKey(p)){
+
                     Variables.debugmod.put(p, true);
-                    p.sendMessage("DEBUG: "+Variables.getOn());
+                    p.sendMessage("DEBUG: ON");
                 }
 
             }

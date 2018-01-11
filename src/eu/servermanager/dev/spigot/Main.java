@@ -3,9 +3,12 @@ package eu.servermanager.dev.spigot;
 import java.util.Arrays;
 
 import eu.servermanager.dev.spigot.commands.CommandMaintenance;
+import eu.servermanager.dev.spigot.commands.CommandNick;
 import eu.servermanager.dev.spigot.commands.CommandServerManager;
+import eu.servermanager.dev.spigot.commands.DebugMod;
 import eu.servermanager.dev.spigot.commands.defaults.CommandClear;
 import eu.servermanager.dev.spigot.commands.moderation.CommandChat;
+import eu.servermanager.dev.spigot.events.EvenstChat;
 import eu.servermanager.dev.spigot.events.EventCommands;
 import eu.servermanager.dev.spigot.utils.ServerManager;
 import eu.servermanager.dev.spigot.utils.ServerModule;
@@ -36,6 +39,10 @@ public class Main extends JavaPlugin{
         getCommand("maintenance").setExecutor(new CommandMaintenance());
         getCommand("clear").setExecutor(new CommandClear());
         getCommand("chat").setExecutor(new CommandChat());
+        getCommand("smdebug").setExecutor(new DebugMod());
+        getCommand("nick").setExecutor(new CommandNick());
+        pm.registerEvents(new EvenstChat(), this);
+
         pm.registerEvents(new EventCommands(), this);
         ServerModule mod = new ServerModule(getDescription().getName(), Arrays.asList("§7ServerManager is \"a modern Essentials\".", "§7Customize your server is really easy with him.", "§7You can block commands with password, report cheaters and bad players, set the motd, the tablist,", "§7join messages, title on join ...", "§7blablabla, it's too long of say all functionnalities of ServerManager !", "§7I just saying \"ServerManager, customize your server!\" "), getDescription().getVersion(), getDescription().getAuthors());
         mod.init();

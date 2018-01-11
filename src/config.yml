@@ -110,4 +110,6 @@ en:
     chatoff_perm: 'servermanager.commands.chat.off'
     chat: '&fChat is now %status% !'
     chat_usage: '&cCommand: /chat <on | clear | off>.'
+  Nick:
+    format: '<%player%> %message%'
 

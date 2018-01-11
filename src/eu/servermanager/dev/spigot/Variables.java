@@ -5,9 +5,11 @@ import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Variables {
 
+    public static Map<Player, String> nickname = new HashMap<>();
     public static String lang = Lang.getLang();
     public static HashMap<Player, Boolean> debugmod = new HashMap<>();
 

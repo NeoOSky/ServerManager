@@ -9,56 +9,53 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 
 import java.util.HashMap;
 
 public class EventCommands implements Listener {
 
-    private HashMap<Player, String> modPassword = new HashMap<>();
+    public HashMap<Player, Boolean> pass = new HashMap<>();
+    public HashMap<Player, Boolean> passT = new HashMap<>();
+    public String password = Main.getInstance().getConfig().getString("CommandsBlocked.password");
 
     @EventHandler
-    public void onCommand(PlayerCommandPreprocessEvent event){
-        Player p = event.getPlayer();
-        String cmd = event.getMessage();
-        if(Variables.getBlockedsCommands().contains(cmd.replaceFirst("/", ""))){
-            for(String s : Variables.getBlockedsCommands()){
-                if(s.replaceFirst("/", "").equalsIgnoreCase(cmd.replaceFirst("/", ""))){
-                    if(Main.getInstance().getConfig().getBoolean("CommandsBlocked.opBypass")){
-                        if(!p.isOp()){
-                            p.sendMessage(Main.getInstance().getConfig().getString("CommandsBlocked.Messages.setpassword").replace("&", "§"));
-                            modPassword.put(p, cmd);
-                            for(Player pp : Bukkit.getOnlinePlayers()){
-                                if(pp.isOp()){
-                                    pp.sendMessage(Variables.getPrefixCommand()+"§c"+p.getName()+":§b /"+modPassword.get(p));
-                                    if(Variables.debugmod.containsKey(pp)){
-                                        pp.sendMessage("DEBUG: \""+p.getName()+"\" -> /"+cmd);
-                                    }
-                                }
-                            }
-                        }
-                    }
-
+    public void onGamemode(PlayerCommandPreprocessEvent e){
+        Player p = e.getPlayer();
+        for(String s : Main.getInstance().getConfig().getStringList("CommandsBlocked.blocked_cmd")){
+            if(e.getMessage().startsWith("/"+s)){
+                if(!pass.get(p)){
+                    e.setCancelled(true);
+                    passT.put(p, true);
+                    p.sendMessage(Main.getInstance().getConfig().getString("CommandsBlocked.Messages.setpassword").replace("&", "§"));
                 }
             }
-
         }
+        //if(getConfig().getStringList("commands").contains("/"+e.getMessage())){
+
     }
-    @EventHandler(priority = EventPriority.HIGHEST)
+    //}
+    @EventHandler (priority = EventPriority.HIGHEST)
+    public void onJoin(PlayerJoinEvent e){
+        Player p = e.getPlayer();
+        pass.put(p, false);
+        passT.put(p, false);
+    }
+    @EventHandler
     public void onChat(AsyncPlayerChatEvent e){
         Player p = e.getPlayer();
-        if(modPassword.containsKey(p)){
-            if(e.getMessage().equals(Main.getInstance().getConfig().getString("CommandsBlocked.password"))){
+        if(passT.get(p)){
+            e.setCancelled(true);
+            passT.put(p, false);
+            if(e.getMessage().equalsIgnoreCase(password)){
+                pass.put(p, true);
                 p.sendMessage(Main.getInstance().getConfig().getString("CommandsBlocked.Messages.sucess").replace("&", "§"));
 
             }else{
                 p.sendMessage(Main.getInstance().getConfig().getString("CommandsBlocked.Messages.wrongpassword").replace("&", "§"));
-                for(Player pp : Bukkit.getOnlinePlayers()){
-                    if(pp.isOp()){
-                        pp.sendMessage(Variables.getPrefixCommand()+"§c"+p.getName()+":§b Wrong password!");
 
-                    }
-                }
             }
         }
+
     }
 }
