@@ -31,10 +31,10 @@ public class EventCommands implements Listener {
                 }
             }
         }
-        //if(getConfig().getStringList("commands").contains("/"+e.getMessage())){
 
     }
-    //}
+
+
     @EventHandler (priority = EventPriority.HIGHEST)
     public void onJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();

@@ -8,10 +8,11 @@ import eu.servermanager.dev.spigot.commands.CommandServerManager;
 import eu.servermanager.dev.spigot.commands.DebugMod;
 import eu.servermanager.dev.spigot.commands.defaults.CommandClear;
 import eu.servermanager.dev.spigot.commands.moderation.CommandChat;
-import eu.servermanager.dev.spigot.events.EvenstChat;
+import eu.servermanager.dev.spigot.events.EventsChat;
 import eu.servermanager.dev.spigot.events.EventCommands;
 import eu.servermanager.dev.spigot.utils.ServerManager;
 import eu.servermanager.dev.spigot.utils.ServerModule;
+import eu.servermanager.dev.spigot.utils.SuperServerModules;
 import eu.servermanager.dev.spigot.utils.Utils;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -41,17 +42,20 @@ public class Main extends JavaPlugin{
         getCommand("chat").setExecutor(new CommandChat());
         getCommand("smdebug").setExecutor(new DebugMod());
         getCommand("nick").setExecutor(new CommandNick());
-        pm.registerEvents(new EvenstChat(), this);
+        pm.registerEvents(new EventsChat(), this);
 
         pm.registerEvents(new EventCommands(), this);
-        ServerModule mod = new ServerModule(getDescription().getName(), Arrays.asList("§7ServerManager is \"a modern Essentials\".", "§7Customize your server is really easy with him.", "§7You can block commands with password, report cheaters and bad players, set the motd, the tablist,", "§7join messages, title on join ...", "§7blablabla, it's too long of say all functionnalities of ServerManager !", "§7I just saying \"ServerManager, customize your server!\" "), getDescription().getVersion(), getDescription().getAuthors());
-        mod.init();
+        ServerModule commands = new ServerModule("ServerManagerCommands", Arrays.asList("All commands of ServerManager."), "Alpha 1.0", Arrays.asList("Palamix", "_Anto"));
+        commands.init();
+        ServerModule events = new ServerModule("ServerManagerEvents", Arrays.asList("All events of ServerManager."), "Alpha 1.0", Arrays.asList("NeoOSky", "Palamix", "_Anto"));
+        events.init();
+        SuperServerModules ServerManager = new SuperServerModules("ServerManager", Arrays.asList("§7ServerManager is \"a modern Essentials\".", "§7Customize your server is really easy with him.", "§7You can block commands with password, report cheaters and bad players, set the motd, the tablist,", "§7join messages, title on join ...", "§7blablabla, it's too long of say all functionnalities of ServerManager !", "§7I just saying \"ServerManager, customize your server!\"", ""), "Alpha 1.0", Arrays.asList("NeoOSky", "Palamix", "_Anto", "Youko", "Xeinel", "MembersOfSkriptMC"), Arrays.asList(commands, events));
+        ServerManager.activateSuperModule();
 
         getServer().getConsoleSender().sendMessage("§e========================================");
         getServer().getConsoleSender().sendMessage("§c§l             ServerManager");
         getServer().getConsoleSender().sendMessage("§aEnabling:");
         getServer().getConsoleSender().sendMessage("§aServerManager has been enabled !");
-        getServer().getConsoleSender().sendMessage("§c         By _Anto and NeoOSky");
         getServer().getConsoleSender().sendMessage("§e========================================");
         getLogger().info("All modules are activated !");
     }
@@ -61,7 +65,6 @@ public class Main extends JavaPlugin{
         getServer().getConsoleSender().sendMessage("§c§l             ServerManager");
         getServer().getConsoleSender().sendMessage("§aDisabling:");
         getServer().getConsoleSender().sendMessage("§aServerManager has been disabled !");
-        getServer().getConsoleSender().sendMessage("§c         By _Anto and NeoOSky");
         getServer().getConsoleSender().sendMessage("§e========================================");
 
     }

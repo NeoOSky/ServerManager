@@ -13,7 +13,8 @@
 # We are free french developers. You help us when you rate this plugin ! You can also send a comment for ask to add new functionality.
 # If you found a bug, write a comment on spigot and we will correct it quickly.
 
-
+# Replace dev's name with "[RANK] PSEUDO: MSG" #Thanks <3
+customRankForDev: true
 
 ########################################
 #--------------------------------------#

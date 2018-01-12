@@ -11,7 +11,7 @@ public class Variables {
 
     public static Map<Player, String> nickname = new HashMap<>();
     public static String lang = Lang.getLang();
-    public static HashMap<Player, Boolean> debugmod = new HashMap<>();
+    public static boolean debugmod;
 
     public static List<String> getBlockedsCommands(){
         List<String> blockeds_cmd = Main.getInstance().getConfig().getStringList("CommandsBlocked.blocked_cmd");

@@ -1,5 +1,8 @@
 package eu.servermanager.dev.spigot.utils;
 
+import org.bukkit.plugin.Plugin;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ServerModule {
@@ -14,9 +17,16 @@ public class ServerModule {
         this.version = version;
         this.authors = authors;
     }
+    public ServerModule(Plugin plugin, List<String> description) {
+        this.name = plugin.getDescription().getName();
+        this.version = plugin.getDescription().getVersion();
+        this.authors = plugin.getDescription().getAuthors();
+        this.description = description;
+
+    }
 
     public void init() {
-        ServerManager.getInstance().modules.add(new ServerModule(this.name, this.description, this.version, this.authors));
+        ServerManager.getInstance().getModules().add(new ServerModule(this.name, this.description, this.version, this.authors));
     }
 
     public String getName() {

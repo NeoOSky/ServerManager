@@ -3,6 +3,7 @@ package eu.servermanager.dev.spigot.commands;
 import eu.servermanager.dev.spigot.Main;
 import eu.servermanager.dev.spigot.utils.ServerManager;
 import eu.servermanager.dev.spigot.utils.ServerModule;
+import eu.servermanager.dev.spigot.utils.SuperServerModules;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
@@ -56,9 +57,9 @@ public class CommandServerManager implements CommandExecutor {
             if(args[0].equalsIgnoreCase("modules")){
                 sender.sendMessage("§8§m----------------------------------------");
                 sender.sendMessage("§c§lServerManager§7 - Modules");
-                sender.sendMessage("§7Actives Modules (§c"+ ServerManager.getInstance().modules.size()+"§7):");
-                for(ServerModule module : ServerManager.getInstance().modules){
-                    sender.sendMessage("§c- "+module.getName()+"§7 version "+module.getVersion()+"§7by §b"+module.getAuthors().toString());
+                sender.sendMessage("§7Actives SuperModules (§c"+ ServerManager.getInstance().getSuperServerModules().size()+"§7):");
+                for(SuperServerModules module : ServerManager.getInstance().getSuperServerModules()){
+                    sender.sendMessage("§c"+module.getName()+"§7[§c"+module.getModules().size()+"§7] version "+module.getVersion()+" by §b"+module.getAuthors().toString().replace("[", "").replace("]", ""));
                 }
                 sender.sendMessage("§8§m----------------------------------------");
             }

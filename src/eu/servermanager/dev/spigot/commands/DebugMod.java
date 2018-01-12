@@ -14,12 +14,12 @@ public class DebugMod implements CommandExecutor{
         if(sender.isOp()){
             if(sender instanceof Player){
                 Player p = (Player)sender;
-                if(Variables.debugmod.containsKey(p)){
-                    Variables.debugmod.remove(p);
+                if(Variables.debugmod){
+                    Variables.debugmod = false;
                     p.sendMessage("DEBUG: OFF");
-                }else if(!Variables.debugmod.containsKey(p)){
+                }else{
 
-                    Variables.debugmod.put(p, true);
+                    Variables.debugmod = true;
                     p.sendMessage("DEBUG: ON");
                 }
 
