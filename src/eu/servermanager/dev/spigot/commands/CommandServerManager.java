@@ -78,7 +78,31 @@ public class CommandServerManager implements CommandExecutor {
                 sender.sendMessage("§bHelpers: §fYouke_TV, Dylan Brown");
                 sender.sendMessage("§8§m----------------------------------------");
             }
+        }else{
+            if(args[0].equalsIgnoreCase("module")){
+                ServerModule mod = null;
+                for(ServerModule md : ServerManager.getInstance().getModules()){
+                    if(md.getName().equalsIgnoreCase(args[1])){
+                        mod = md;
+                        break;
+                    }
+                    if(mod.getName().equalsIgnoreCase(args[1])){
+                        sender.sendMessage("§8§m----------------------------------------");
+                        sender.sendMessage("§c§lServerManager§f - §7Module "+mod.getName());
+                        sender.sendMessage(" ");
+                        sender.sendMessage("§c"+mod.getName()+" §7version "+mod.getVersion()+" by §b"+mod.getAuthors().toString().replace("[", "").replace("]", ""));
+                        sender.sendMessage("§cDescription:");
+                        for(String s : mod.getDescription()){
+                            sender.sendMessage("§7"+s);
+                        }
+                        sender.sendMessage("§8§m----------------------------------------");
+
+                    }
+
+                }
+            }
         }
+
 
 
 

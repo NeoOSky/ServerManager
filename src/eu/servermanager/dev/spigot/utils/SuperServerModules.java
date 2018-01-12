@@ -19,10 +19,10 @@ public class SuperServerModules {
         this.description = description;
         this.name = name;
         this.modules = modules;
-        Main.getInstance().getLogger().info("[ServerManager] SuperServerModule named "+name+" has been loaded!");
     }
     public void activateSuperModule(){
         ServerManager.getInstance().getSuperServerModules().add(new SuperServerModules(name, description, version, authors, modules));
+        Main.getInstance().getLogger().info("[ServerManager] SuperServerModule named "+name+" has been loaded!");
         Main.getInstance().getLogger().info("[ServerManager] SuperServerModule named "+name+" has been enabled!");
 
     }
