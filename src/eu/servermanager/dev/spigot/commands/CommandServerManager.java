@@ -101,6 +101,32 @@ public class CommandServerManager implements CommandExecutor {
 
                 }
             }
+            if(args[0].equalsIgnoreCase("supermodule")){
+                SuperServerModules mod = null;
+                for(SuperServerModules md : ServerManager.getInstance().getSuperServerModules()){
+                    if(md.getName().equalsIgnoreCase(args[1])){
+                        mod = md;
+                        break;
+                    }
+                    if(mod.getName().equalsIgnoreCase(args[1])){
+                        sender.sendMessage("§8§m----------------------------------------");
+                        sender.sendMessage("§c§lServerManager§f - §7Module "+mod.getName());
+                        sender.sendMessage(" ");
+                        sender.sendMessage("§c"+mod.getName()+"§7[§c"+mod.getModules().size()+"§7] version "+mod.getVersion()+" by §b"+mod.getAuthors().toString().replace("[", "").replace("]", ""));
+                        sender.sendMessage("§cModules:");
+                        for(ServerModule s : mod.getModules()){
+                            sender.sendMessage("§7- §c"+s.getName()+"§7 version "+s.getVersion());
+                        }
+                        sender.sendMessage("§cDescription:");
+                        for(String s : mod.getDescription()){
+                            sender.sendMessage("§7"+s);
+                        }
+                        sender.sendMessage("§8§m----------------------------------------");
+
+                    }
+
+                }
+            }
         }
 
 
