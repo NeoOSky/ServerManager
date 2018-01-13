@@ -10,7 +10,5 @@ commands:
     description: clear inventory from a player
   maintenance:
     description: manage the maintenance of the server
-  smdebug:
-    permission: op
   chat:
   nick:

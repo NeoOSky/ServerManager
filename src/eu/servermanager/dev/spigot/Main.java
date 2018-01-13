@@ -5,7 +5,6 @@ import java.util.Arrays;
 import eu.servermanager.dev.spigot.commands.CommandMaintenance;
 import eu.servermanager.dev.spigot.commands.CommandNick;
 import eu.servermanager.dev.spigot.commands.CommandServerManager;
-import eu.servermanager.dev.spigot.commands.DebugMod;
 import eu.servermanager.dev.spigot.commands.defaults.CommandClear;
 import eu.servermanager.dev.spigot.commands.moderation.CommandChat;
 import eu.servermanager.dev.spigot.events.EventsChat;
@@ -40,15 +39,14 @@ public class Main extends JavaPlugin{
         getCommand("maintenance").setExecutor(new CommandMaintenance());
         getCommand("clear").setExecutor(new CommandClear());
         getCommand("chat").setExecutor(new CommandChat());
-        getCommand("smdebug").setExecutor(new DebugMod());
         getCommand("nick").setExecutor(new CommandNick());
         pm.registerEvents(new EventsChat(), this);
-
         pm.registerEvents(new EventCommands(), this);
         ServerModule commands = new ServerModule("ServerManagerCommands", Arrays.asList("All commands of ServerManager."), "Alpha 1.0", Arrays.asList("Palamix", "_Anto"));
-        commands.init();
+        ServerManager.getInstance().registerModule(commands);
         ServerModule events = new ServerModule("ServerManagerEvents", Arrays.asList("All events of ServerManager."), "Alpha 1.0", Arrays.asList("NeoOSky", "Palamix", "_Anto"));
-        events.init();
+        ServerManager.getInstance().registerModule(events);
+
         SuperServerModules ServerManager = new SuperServerModules("ServerManager", Arrays.asList("§7ServerManager is \"a modern Essentials\".", "§7Customize your server is really easy with him.", "§7You can block commands with password, report cheaters and bad players, set the motd, the tablist,", "§7join messages, title on join ...", "§7blablabla, it's too long of say all functionnalities of ServerManager !", "§7I just saying \"ServerManager, customize your server!\"", ""), "Alpha 1.0", Arrays.asList("NeoOSky", "Palamix", "_Anto", "Youko", "Xeinel", "MembersOfSkriptMC"), Arrays.asList(commands, events));
         ServerManager.activateSuperModule();
 
