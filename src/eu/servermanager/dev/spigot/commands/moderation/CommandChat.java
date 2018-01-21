@@ -13,7 +13,7 @@ public class CommandChat implements CommandExecutor {
             }else{
                 if(args[0].equalsIgnoreCase("on")){
 
-                    
+
 
                 }else if(){
 
